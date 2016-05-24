@@ -1,0 +1,8 @@
+PROJECT(xercesc-test)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+INCLUDE(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+CONAN_BASIC_SETUP()
+
+ADD_EXECUTABLE(xercesc-test main.cpp)
+TARGET_LINK_LIBRARIES(xercesc-test ${CONAN_LIBS})
