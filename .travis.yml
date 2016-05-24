@@ -6,8 +6,8 @@ language: python
 env:
   global:
     - CONAN_UPLOAD=1
-    - CONAN_REFERENCE="bzip2/1.0.6"
-    - CONAN_USERNAME="lasote"
+    - CONAN_REFERENCE="xerces-c/3.1.3"
+    - CONAN_USERNAME="ErikTempelaar"
     - CONAN_CHANNEL="ci"
     - CONAN_TOTAL_PAGES=2
 
