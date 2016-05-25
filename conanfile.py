@@ -11,7 +11,6 @@ class XercesCConan(ConanFile):
     url="https://xerces.apache.org/xerces-c/"
     license="http://www.apache.org/licenses/LICENSE-2.0.html"
     folder_name="xerces-c-3.1.3"
-    generators = ""
 
     def source(self):
         zip_name = "xerces-c-3.1.3.zip"
@@ -21,10 +20,11 @@ class XercesCConan(ConanFile):
         os.unlink(zip_name)
 
     def build(self):
+        env = ConfigureEnvironment(self.deps_cpp_info, self.settings)
         self.run("cd %s && %s" % (self.folder_name, 'chmod u+x configure'))
         self.run("cd %s/config && %s" % (self.folder_name, 'chmod u+x pretty-make'))
-        self.run("cd %s && %s" % (self.folder_name, './configure'))
-        self.run("cd %s && %s" % (self.folder_name, 'make'))
+        self.run("cd %s && %s %s" % (self.folder_name, env.command_line, './configure'))
+        self.run("cd %s && %s %s" % (self.folder_name, env.command_line, 'make'))
         
         # Copying all executable files to bin
         self.run("mkdir -p bin")
